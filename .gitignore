@@ -1,0 +1,5 @@
+# binaries
+*.out
+
+# input-files
+input
