@@ -44,7 +44,7 @@ int quicksort(int *array, int low, int high) {
 }
 
 int main(void) {
-    // vars for part 1
+    /** vars for part 1 */
     FILE *file;
     char filename[] = "input";
     int left[NUMBERS];
@@ -55,13 +55,13 @@ int main(void) {
     int temp = 0;
     int sum = 0;
 
-    // vars for part 2
+    /** vars for part 2 */
     Pair pairs[NUMBERS];
     Pair pair = {0, 0};
     int number = 0;
     int sim_score = 0;
 
-    // part 1 
+    /** part 1 */
     file = fopen(filename, "r");
     if (file == NULL) {
         printf("Error: Could not open file %s\n", filename);
@@ -85,7 +85,7 @@ int main(void) {
 
     printf("part 1 answer: %d\n", sum);
 
-    // part 2
+    /** part 2 */
     for (i = 0; i < NUMBERS; i++) {
         number = left[i];
         pair.key = number;
