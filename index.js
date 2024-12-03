@@ -18,10 +18,15 @@ const main = async () => {
         const inputPath = `./day-${day}/input`;
         const { part1, part2 } = await import(modulePath);
 
+        console.log(`Day ${day}:`);
         console.log(`Part 1: ${solver(part1, inputPath)}`);
         console.log(`Part 2: ${solver(part2, inputPath)}`);
     } catch (err) {
-        console.error('Something went wrong!');
+        if (err.code === "ERR_MODULE_NOT_FOUND") {
+            console.error(`Day ${day} not found`);
+        } else {
+            console.error(err);
+        }
         process.exit(1);
     }
 };
