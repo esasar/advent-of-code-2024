@@ -19,7 +19,8 @@ const formMatrix = (input) => {
     return matrix;
 }
 
-const flipAlongDiagonal = (matrix) => {
+const flipAlongDiagonal = (input) => {
+    const matrix = formMatrix(input);
     const newMatrix = [];
     for (let i = 0; i < matrix.length; i++) {
         newMatrix.push([]);
@@ -30,10 +31,11 @@ const flipAlongDiagonal = (matrix) => {
         }
     }
 
-    return newMatrix;
+    return formString(newMatrix);
 }
 
-const flipAlongVertical = (matrix) => {
+const flipAlongVertical = (input) => {
+    const matrix = formMatrix(input);
     const newMatrix = [];
     for (let i = 0; i < matrix.length; i++) {
         newMatrix.push([]);
@@ -44,10 +46,11 @@ const flipAlongVertical = (matrix) => {
         }
     }
 
-    return newMatrix;
+    return formString(newMatrix);
 }
 
-const formDiagonals = (matrix) => {
+const formDiagonals = (input) => {
+    const matrix = formMatrix(input);
     const diagonals = [];
     for (let i = 0; i < matrix.length; i++) {
         let diagonal = [];
@@ -73,7 +76,7 @@ const formDiagonals = (matrix) => {
         diagonals.push(diagonal);
     }
 
-    return diagonals;
+    return formString(diagonals);
 }
 
 const formString = (matrix) => {
@@ -88,19 +91,11 @@ const formString = (matrix) => {
 
 const part1 = (input) => {
     let count = 0;
+
     count += findPatterns(input);
-
-    const newInput = formString(flipAlongDiagonal(formMatrix(input)));
-
-    count += findPatterns(newInput);
-
-    const diagonals = formString(formDiagonals(formMatrix(input)));
-
-    count += findPatterns(diagonals);
-
-    const newDiagonals = formString(formDiagonals(flipAlongVertical(formMatrix(input))));
-
-    count += findPatterns(newDiagonals);
+    count += findPatterns(flipAlongDiagonal(input));
+    count += findPatterns(formDiagonals(input));
+    count += findPatterns(formDiagonals(flipAlongVertical(input)));
 
     return count;
 };
